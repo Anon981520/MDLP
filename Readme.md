@@ -1,0 +1,32 @@
+# Data-Fusion Simulation Framework
+
+This repository contains the code used to **simulate and compare methods for Average Treatment Effect (ATE) estimation when an RCT is supplemented by multiple observational datasets**.  The workflow is designed around the *causl* package and implements both classical and cutting-edge approaches (AIPW, PROCOVA, shrinkage, power-likelihood, Bayesian mixture priors, etc.).
+
+## Repository layout
+
+| File | Role |
+|------|------|
+| **`Simulation code.R`** | Main driver script. 1) Generates synthetic RCT + observational data via `generate.data.list.HTE`, 2) calls a suite of estimators through `sim_func()`, 3) runs large simulation loops over bias scenarios and saves the results to CSV. :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3} |
+| **`Functions.R`** | Library of helper functions sourced by the main script—e.g. posterior samplers (`approx_posterior*`), optimisation helpers (`new_method_optim`, `old_power_likelihood`), AIPW machinery, PROCOVA, shrinkage utilities, etc. :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5} |
+
+## Quick start
+
+```r
+# 0.  Clone the repo and open an R session in the repo root
+
+# 1.  Source the function library
+source("Functions.R")
+
+# 2. Either run simulation code in entirety, or just extract sim_func and run that 
+
+# 3.  Run a single simulation instance
+out <- sim_func(omega = 0.5,      # strength of unmeasured confounding
+                seed  = 123,      # RNG seed
+                n_o   = 500,      # obs sample size per dataset
+                n_e   = 500,      # RCT sample size
+                n_datasets = 10)  # number of observational datasets
+
+# 4.  Inspect results
+head(out)
+
+
