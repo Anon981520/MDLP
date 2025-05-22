@@ -6,8 +6,8 @@ This repository contains the code used to **simulate and compare methods for Ave
 
 | File | Role |
 |------|------|
-| **`Simulation code.R`** | Main driver script. 1) Generates synthetic RCT + observational data and calls a suite of estimators through `sim_func()`, 2) runs large simulation loops over bias scenarios and saves the results to CSV.  |
-| **`Functions.R`** | Library of helper functions sourced by the main script—e.g. posterior samplers (`approx_posterior*`), optimisation helpers (`new_method_optim`, `old_power_likelihood`), AIPW machinery, PROCOVA, shrinkage utilities, etc.  |
+| **`Simulation code.R`** | Main driver script. 1) Generates synthetic RCT + observational data and calls a suite of estimators through `sim_func()`, 2) runs large simulation loops over bias scenarios and saves the results to CSV. |
+| **`Functions.R`** | Library of helper functions sourced by the main script—e.g. posterior samplers (`approx_posterior*`), optimisation helpers (`new_method_optim`, `old_power_likelihood`), AIPW machinery, PROCOVA, shrinkage utilities, etc. Note: new_opt_method corresponds to MDPL.  |
 ## Quick start
 
 ```r
@@ -22,10 +22,10 @@ out <- sim_func(omega = 0.5,      # strength of unmeasured confounding
                 n_o   = 500,      # obs sample size per dataset
                 n_e   = 500,      # RCT sample size
                 n_datasets = 10)  # number of observational datasets
-# 3.  Inspect results
+# 3.  Inspect results (Note: new_opt_method corresponds to MDPL)
 head(out)
 
-# 4. Run all code in Simulation code.R to implement method for a variety of bias values in parallel
+# 4. Run all code in 'Simulation code.R' to implement method for a variety of different methods and bias values in parallel.
 
 
 
