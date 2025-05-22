@@ -8,7 +8,7 @@ This repository contains the code used to **simulate and compare methods for Ave
 |------|------|
 | **`Simulation code.R`** | Main driver script. 1) Generates synthetic RCT + observational data and then calls a suite of estimators through `sim_func()`, 2) runs large simulation loops over bias scenarios and saves the results to CSV. 
 
-| **`Functions.R`** | Library of helper functions sourced by the main script—e.g. posterior samplers (`approx_posterior*`), optimisation helpers (`new_method_optim`, `old_power_likelihood`), AIPW machinery, PROCOVA, shrinkage utilities, etc. 
+| **`Functions.R`** | Library of helper functions sourced by the main script—e.g. posterior samplers (`approx_posterior*`), optimisation helpers (`new_method_optim`, `old_power_likelihood`), AIPW machinery, PROCOVA, shrinkage utilities, etc. |
 
 ## Quick start
 
